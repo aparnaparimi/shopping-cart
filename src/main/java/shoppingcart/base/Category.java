@@ -23,4 +23,10 @@ public class Category {
 		this.title = title;
 		this.parentCategory = parentCategory;
 	}
+
+	@Override
+	public String toString() {
+		return "Category:" + title;
+	}
+
 }

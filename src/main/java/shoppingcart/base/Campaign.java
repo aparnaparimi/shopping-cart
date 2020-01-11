@@ -22,4 +22,11 @@ public class Campaign extends Discount {
 		super(amount, minQuantity, discountType);
 		this.category = category;
 	}
+
+	@Override
+	public String toString() {
+		return "Campaign Category:" + category + ", Discount Amount:" + discountAmount + ", Minimum Amount:"
+				+ minimumAmount + ", Discount Type:" + discountType;
+	}
+
 }

@@ -1,6 +1,6 @@
 package com.shoppingcart;
 
-class DemoApplicationTests {
+class ShoppingCartTest {
 
 
 }

@@ -27,6 +27,11 @@ public class FixedDeliveryCostCalculator implements DeliveryCostCalculator {
 		this.costPerDelivery = costPerDelivery;
 	}
 
+	/**
+	 * Calculate delivery cost for shopping cart.
+	 * @param cart
+	 * @return
+	 */
 	public double calculateFixedDeliveryCostForCart(ShoppingCart cart) {
 		return calculateFor(cart.getNumberOfDeliveries(), cart.getNumberOfProducts());
 	}
@@ -34,8 +39,8 @@ public class FixedDeliveryCostCalculator implements DeliveryCostCalculator {
 	@Override
 	public double calculateFor(int numberOfDeliveries, int numberOfProducts) {
 		double result = 0;
-		result = numberOfDeliveries * costPerDelivery + numberOfProducts * costPerProduct + FIXED_COST;
-		log.info("Delivery cost calculated : {} for number of deliveries : {} and number of products : {} ", result,
+		result = (numberOfDeliveries * costPerDelivery) + (numberOfProducts * costPerProduct) + FIXED_COST;
+		log.info("Delivery cost calculated : {} for number of deliveries : {} and number of products : {} ",  String.format("%.2f", result) + "TL",
 				numberOfDeliveries, numberOfProducts);
 		return result;
 	}
