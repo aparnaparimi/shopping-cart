@@ -166,7 +166,7 @@ public class ShoppingCart {
 	 * Get total quantity of products in shopping cart.
 	 * @return
 	 */
-	private int getQuantityOfProducts() {
+	public int getQuantityOfProducts() {
 		return products.values().stream().mapToInt(Integer::intValue).sum();
 	}
 
