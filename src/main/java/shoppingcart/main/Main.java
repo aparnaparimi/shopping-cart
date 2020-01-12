@@ -1,19 +1,22 @@
 package shoppingcart.main;
 
+import lombok.extern.slf4j.Slf4j;
 import shoppingcart.base.Campaign;
 import shoppingcart.base.Category;
 import shoppingcart.base.Coupon;
 import shoppingcart.base.Product;
 import shoppingcart.base.ShoppingCart;
+import shoppingcart.cost.FixedDeliveryCostCalculator;
 import shoppingcart.enums.DiscountType;
 
 /**
  * @author Hakan
  */
+@Slf4j
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(initializeShoppingCart().print());
+		log.info(initializeShoppingCart().print());
 	}
 
 	public static ShoppingCart initializeShoppingCart() {
@@ -28,7 +31,7 @@ public class Main {
 		Product almond = new Product("Almond", 150.0, food);
 		Product soap = new Product("Soap", 12.5, hygiene);
 		
-		ShoppingCart cart = new ShoppingCart();
+		ShoppingCart cart = new ShoppingCart(new FixedDeliveryCostCalculator(2, 1));
 		cart.addItem(apple, 3);
 		cart.addItem(almond, 1);
 		cart.addItem(shampoo, 1);

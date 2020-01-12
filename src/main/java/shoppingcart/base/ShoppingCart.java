@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import lombok.Getter;
 import lombok.var;
 import lombok.extern.slf4j.Slf4j;
 import shoppingcart.cost.FixedDeliveryCostCalculator;
@@ -17,6 +18,7 @@ import shoppingcart.cost.FixedDeliveryCostCalculator;
  *
  */
 @Slf4j
+@Getter
 public class ShoppingCart {
 
 	private Map<Product, Integer> products;
@@ -25,10 +27,12 @@ public class ShoppingCart {
 	private double couponDiscount = 0;
 	private Campaign appliedCampaign;
 	private Coupon appliedCoupon;
+	private FixedDeliveryCostCalculator deliveryCostCalculator;
 
-	public ShoppingCart() {
+	public ShoppingCart(FixedDeliveryCostCalculator deliveryCostCalculator) {
 		this.products = new HashMap<>();
 		this.categoryProductMapping = new HashMap<>();
+		this.deliveryCostCalculator = deliveryCostCalculator;
 	}
 
 	/**
@@ -142,7 +146,6 @@ public class ShoppingCart {
 	 * @return
 	 */
 	public double getDeliveryCost() {
-		FixedDeliveryCostCalculator deliveryCostCalculator = new FixedDeliveryCostCalculator(5, 1);
 		return deliveryCostCalculator.calculateFixedDeliveryCostForCart(this);
 	}
 
@@ -178,7 +181,7 @@ public class ShoppingCart {
 	public int getNumberOfDeliveries() {
 		return products.entrySet().stream().map(p -> p.getKey().getCategory()).collect(Collectors.toSet()).size();
 	}
-
+	
 	/**
 	 * Print final shopping cart detail.
 	 * @return
