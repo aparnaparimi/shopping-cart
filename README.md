@@ -51,5 +51,5 @@ java -jar ShoppingCart.jar in the `target` directory.
 Get minimum 10 items in Kitchen category applied. Campaign discount : 1100.00TL\
 Coupon 10.0% for 1312.50 TL purhase applied. Coupon discount: 131.25TL\
 <b>Shipping Total:</b>14.99TL\
-<b>Total Amount:</b>1196.24TL\
+<b>Total Amount:</b>1196.24TL
 
